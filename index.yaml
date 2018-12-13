@@ -1,0 +1,175 @@
+apiVersion: v1
+entries:
+  affiliates:
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: 2018-12-13T02:02:37.706115938-05:00
+    description: A Helm chart for Kubernetes
+    digest: 378acf597d61cdb4338109ffb23477ec4ef1aed407c786ac81e8b0e80a1059a1
+    name: affiliates
+    urls:
+    - affiliates-helm/affiliates-0.1.18.tgz
+    version: 0.1.18
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: 2018-12-13T02:02:37.705232382-05:00
+    description: A Helm chart for Kubernetes
+    digest: 791a9ab47a18d46d811d76bd728c0c1ecbc8eb7d237bfdd565b39aa0214e4334
+    name: affiliates
+    urls:
+    - affiliates-helm/affiliates-0.1.17.tgz
+    version: 0.1.17
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: 2018-12-13T02:02:37.704403555-05:00
+    description: A Helm chart for Kubernetes
+    digest: 0e2771bf758637f23532057925cbe92435adb49e2a569b15d43c60db33282773
+    name: affiliates
+    urls:
+    - affiliates-helm/affiliates-0.1.16.tgz
+    version: 0.1.16
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: 2018-12-13T02:02:37.703547409-05:00
+    description: A Helm chart for Kubernetes
+    digest: e61d6037567bce1440c1c286ad3b10fab3b2061568b262ebb1208e02c8d9b5e0
+    name: affiliates
+    urls:
+    - affiliates-helm/affiliates-0.1.15.tgz
+    version: 0.1.15
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: 2018-12-13T02:02:37.702678427-05:00
+    description: A Helm chart for Kubernetes
+    digest: ff5290808298dd0118616a5f7c288a81f4d8dd8d3403be60874187599eaa4695
+    name: affiliates
+    urls:
+    - affiliates-helm/affiliates-0.1.14.tgz
+    version: 0.1.14
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: 2018-12-13T02:02:37.701735823-05:00
+    description: A Helm chart for Kubernetes
+    digest: a68ccbd281f794c22136d612d0bf2ed0a665002036b21c6662a4863c9c1cb043
+    name: affiliates
+    urls:
+    - affiliates-helm/affiliates-0.1.13.tgz
+    version: 0.1.13
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: 2018-12-13T02:02:37.700793808-05:00
+    description: A Helm chart for Kubernetes
+    digest: a3dfdf597b21f8f1a2320a958365980c8568f5f1687190e4ea981f39a965a0ec
+    name: affiliates
+    urls:
+    - affiliates-helm/affiliates-0.1.12.tgz
+    version: 0.1.12
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: 2018-12-13T02:02:37.699846803-05:00
+    description: A Helm chart for Kubernetes
+    digest: 9d4cf2595f72447732ed4283d58d754fe7c1e1e2bb5444b4141a99e77985af6c
+    name: affiliates
+    urls:
+    - affiliates-helm/affiliates-0.1.11.tgz
+    version: 0.1.11
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: 2018-12-13T02:02:37.698866669-05:00
+    description: A Helm chart for Kubernetes
+    digest: 2898e307edb047ecec57941f741e31f3425935efc13992092c6c458d72086988
+    name: affiliates
+    urls:
+    - affiliates-helm/affiliates-0.1.10.tgz
+    version: 0.1.10
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: 2018-12-13T02:02:37.718234868-05:00
+    description: A Helm chart for Kubernetes
+    digest: fe0ab761feba0c8e2db8b7cfe0f29c4cd8ef3ac2cd6a69746c6437aeb7ab24a9
+    name: affiliates
+    urls:
+    - affiliates-helm/affiliates-0.1.9.tgz
+    version: 0.1.9
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: 2018-12-13T02:02:37.714297195-05:00
+    description: A Helm chart for Kubernetes
+    digest: 6557cd17f22d87aca99c4ffda6efc62bb467f714b55131f95d2c54c19e9231a7
+    name: affiliates
+    urls:
+    - affiliates-helm/affiliates-0.1.8.tgz
+    version: 0.1.8
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: 2018-12-13T02:02:37.71302739-05:00
+    description: A Helm chart for Kubernetes
+    digest: 94e1ce82670d7cd43570b255b5f746af529d7142dc304be4661173c3778be4e8
+    name: affiliates
+    urls:
+    - affiliates-helm/affiliates-0.1.7.tgz
+    version: 0.1.7
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: 2018-12-13T02:02:37.71153302-05:00
+    description: A Helm chart for Kubernetes
+    digest: 3207364b311916dd360048100225a713cb93622a79f45fe7876fb9e3f103fb33
+    name: affiliates
+    urls:
+    - affiliates-helm/affiliates-0.1.6.tgz
+    version: 0.1.6
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: 2018-12-13T02:02:37.710184585-05:00
+    description: A Helm chart for Kubernetes
+    digest: 6ccf5a0f526b0a69d99b00897a3810ba73a4292a799dc12b7d1d61501768f620
+    name: affiliates
+    urls:
+    - affiliates-helm/affiliates-0.1.5.tgz
+    version: 0.1.5
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: 2018-12-13T02:02:37.708611939-05:00
+    description: A Helm chart for Kubernetes
+    digest: 09f75db0f9e0791e666c43be16425f48710d9c8abae521c9d5378abc7ed86b36
+    name: affiliates
+    urls:
+    - affiliates-helm/affiliates-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: 2018-12-13T02:02:37.707826169-05:00
+    description: A Helm chart for Kubernetes
+    digest: 3042d584a516466da04ff9e039bd726a37ca80ab7ddb3071d1f96fefb1485ba6
+    name: affiliates
+    urls:
+    - affiliates-helm/affiliates-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: 2018-12-13T02:02:37.706944102-05:00
+    description: A Helm chart for Kubernetes
+    digest: 840bd55c6430b61c525e0d607817742fa14fe347b164bbd08a3498e12017b2b3
+    name: affiliates
+    urls:
+    - affiliates-helm/affiliates-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: 2018-12-13T02:02:37.697894465-05:00
+    description: A Helm chart for Kubernetes
+    digest: b13779eec67a2db915e1676384ff63f13067a8df81a06345e4dcadcfbdec0465
+    name: affiliates
+    urls:
+    - affiliates-helm/affiliates-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: 2018-12-13T02:02:37.696897765-05:00
+    description: A Helm chart for Kubernetes
+    digest: bd0617f7caea5b52b16025217430e23bf44715c1a3953282cdf9d46c726d0bb6
+    name: affiliates
+    urls:
+    - affiliates-helm/affiliates-0.1.0.tgz
+    version: 0.1.0
+generated: 2018-12-13T02:02:37.695386374-05:00

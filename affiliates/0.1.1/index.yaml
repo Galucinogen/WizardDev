@@ -1,0 +1,13 @@
+apiVersion: v1
+entries:
+  affiliates:
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: 2018-12-12T17:35:07.094581618-05:00
+    description: A Helm chart for Kubernetes
+    digest: b13779eec67a2db915e1676384ff63f13067a8df81a06345e4dcadcfbdec0465
+    name: affiliates
+    urls:
+    - affiliates-0.1.1.tgz
+    version: 0.1.1
+generated: 2018-12-12T17:35:07.093401129-05:00
