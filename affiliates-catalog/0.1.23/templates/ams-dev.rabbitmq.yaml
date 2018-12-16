@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: ams-dev-helm
+  name: rabbitmq
+spec:
+  selector:
+    matchLabels:
+      app: rabbitmq
+      tier: stackserver
+      track: stable
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: rabbitmq
+        tier: stackserver
+        track: stable
+    spec:
+      containers:
+        - name: rabbitmq
+          image: "{{ template "affiliates.rabbitmq" . }}"
+          imagePullPolicy: {{ .Values.rabbitmq.pullPolicy | quote }}
+          ports:
+            - name: queue-port
+              containerPort: {{ .Values.rabbitmqQueuePort }}
+            - name: mng-console
+              containerPort: {{ .Values.rabbitmqMngConsolePort }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rabbitmq
+  namespace: ams-dev-helm
+  labels:
+    app: rabbitmq
+spec:
+  selector:
+    app: rabbitmq
+  type: NodePort
+  ports:
+  - name: mng-console
+    port: {{ .Values.rabbitmqMngConsolePort }}
+    targetPort: {{ .Values.rabbitmqMngConsolePort }}
+    nodePort: 32721
+    protocol: TCP
