@@ -1,0 +1,42 @@
+# Default values for affiliates.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+## Global Docker image registry
+## Please, note that this will override the image registry for all the images, including dependencies, configured to use the global value
+##
+# global:
+#   imageRegistry:
+
+replicaCount: 1
+
+db:
+  registry: mcr.microsoft.com
+  repository: mssql/server
+  tag: latest
+  pullPolicy: IfNotPresent
+
+web:
+  registry: 192.168.1.80:8030
+  repository: docker/develop/amsfront.manager.ui
+  tag: latest
+  pullPolicy: IfNotPresent
+
+api:
+  registry: 192.168.1.80:8030
+  repository: docker/develop/ams.core.api
+  tag: latest
+  pullPolicy: IfNotPresent
+
+rabbitmq:
+  registry: rabbitmq
+  repository: 3-management
+  tag: latest
+  pullPolicy: IfNotPresent
+
+dbPort: 1433
+dbAcceptEula: Y
+dbSApassword: WkthNnVHN3ZSbHdsUDZ4
+
+rabbitmqQueuePort: 5672
+rabbitmqMngConsolePort: 15672

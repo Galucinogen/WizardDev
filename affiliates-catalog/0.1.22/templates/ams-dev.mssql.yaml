@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: ams-dev-helm
+  name: db
+spec:
+  selector:
+    matchLabels:
+      app: db
+      tier: database
+      track: stable
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: db
+        tier: database
+        track: stable
+    spec:
+      containers:
+        - name: db
+          image: "{{ template "affiliates.db" . }}"
+          imagePullPolicy: {{ .Values.db.pullPolicy | quote }}
+          ports:
+          - name: mssql
+            containerPort: {{ .Values.dbPort }}
+          env:
+          - name: SA_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: {{ template "affiliates.fullname" . }}
+                key: sa-password
+          - name: ACCEPT_EULA
+            value: {{ .Values.dbAcceptEula | quote }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: db
+  namespace: ams-dev-helm
+  labels:
+    app: db
+spec:
+  selector:
+    app: db
+  type: NodePort
+  ports:
+  - name: mssql
+    port: {{ .Values.dbPort }}
+    targetPort: {{ .Values.dbPort }}
+    nodePort: 31434
+    protocol: TCP

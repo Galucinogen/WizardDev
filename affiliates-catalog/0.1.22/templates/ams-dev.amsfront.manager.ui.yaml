@@ -1,0 +1,162 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ams-dev-ngx-confui
+  namespace: ams-dev-helm
+data:
+  nginx.conf: |
+    #user  nobody;
+    worker_processes auto;
+
+    events {
+        worker_connections  1024;
+        use                 epoll;
+        multi_accept        on;
+    }
+
+    http {
+        include                         mime.types;
+        default_type                    application/octet-stream;
+        sendfile_max_chunk              128k;
+        sendfile                        on;
+        tcp_nopush                      on;
+        tcp_nodelay                     on;
+        reset_timedout_connection       on;
+        client_header_timeout           3;
+        client_body_timeout             5;
+        send_timeout                    3;
+        client_header_buffer_size       2k;
+        client_body_buffer_size         256k;
+        client_max_body_size            100m;
+        access_log                      off;
+        keepalive_timeout 2;
+        server_tokens off;
+        include /etc/nginx/conf.d/*.conf;
+        include /etc/nginx/sites-enabled/*;
+    }
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ams-dev-vh-confui
+  namespace: ams-dev-helm
+data:
+  default.conf: |
+    server {
+        listen   80; ## listen for ipv4; this line is default and implied
+        listen   [::]:80 default ipv6only=on; ## listen for ipv6
+
+        root /var/www/html;
+        index index.html;
+
+        server_name _;
+
+        gzip                on;
+        gzip_comp_level     9;
+        gzip_min_length     512;
+        gzip_buffers        8 64k;
+        gzip_types text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript application/javascript image/svg+xml;
+        gzip_proxied        any;
+
+        sendfile off;
+
+        error_log /dev/stdout info;
+        access_log /dev/stdout;
+
+      location /api {
+        rewrite /api/(.*) /$1  break;
+        proxy_pass http://affiliate-system-api:80;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Real-IP $remote_addr;
+      }
+
+
+        location / {
+            try_files $uri $uri/ /index.html;
+        }
+
+
+
+      location ~* \.(jpg|jpeg|gif|png|css|js|ico|xml)$ {
+        expires           5d;
+            }
+
+        location ~* /(?:uploads|files)/.*\.php$ {
+            deny all;
+        }
+
+    }
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: ams-dev-helm
+  name: web
+spec:
+  selector:
+    matchLabels:
+      app: web
+      tier: stackserver
+      track: develop
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: web
+        tier: stackserver
+        track: develop
+    spec:
+      containers:
+        - name: web
+          image: "{{ template "affiliates.web" . }}"
+          imagePullPolicy: {{ .Values.web.pullPolicy | quote }}
+          ports:
+            - name: http
+              containerPort: 80
+          volumeMounts:
+          - name: ams-dev-ngx-confui
+            mountPath: /etc/nginx/nginx.conf
+            subPath: nginx.conf
+          - name: ams-dev-vh-confui
+            mountPath: /etc/nginx/conf.d/default.conf
+            subPath: default.conf
+          readinessProbe:
+            httpGet:
+              path: /version
+              port: 80
+            initialDelaySeconds: 5
+            timeoutSeconds: 1
+            periodSeconds: 15
+          livenessProbe:
+            httpGet:
+              path: /version
+              port: 80
+            initialDelaySeconds: 15
+            timeoutSeconds: 1
+            periodSeconds: 15
+      volumes:
+      - name: ams-dev-ngx-confui
+        configMap:
+          name: ams-dev-ngx-confui
+      - name: ams-dev-vh-confui
+        configMap:
+          name: ams-dev-vh-confui
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web
+  namespace: ams-dev-helm
+  labels:
+    app: web
+spec:
+  selector:
+    app: web
+  type: NodePort
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
+    nodePort: 32186
+    protocol: TCP
